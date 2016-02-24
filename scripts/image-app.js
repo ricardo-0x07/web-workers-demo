@@ -37,6 +37,7 @@
   }
 
   function manipulateImage(type) {
+    console.log(type);
     var a, b, g, i, imageData, j, length, pixel, r, ref;
     imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     var args = {imageData: imageData, type:type};
@@ -53,7 +54,8 @@
     ctx.putImageData(imageData, 0, 0);
 
     }, false);
-
+  
+    console.log(type);
    worker.postMessage(args); // Start the worker.
 
 
