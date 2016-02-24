@@ -40,23 +40,35 @@
     console.log(type);
     var a, b, g, i, imageData, j, length, pixel, r, ref;
     imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    var args = {imageData: imageData, type:type};
 
 
     toggleButtonsAbledness();
 
+    if (window.Worker) {
     var worker = new Worker('worker.js');
+    var args = {imageData: imageData, type:type};
+      if(worker.postMessage(args)){
+        console.log('Message posted to worker');
+      }
+
+
+      worker.onmessage = function(e){
+      imageData = e.data;
+      console.log('Message received from worker');
+      return ctx.putImageData(imageData, 0, 0);
+
+      };
+    }
+
+
  
     worker.addEventListener('message', function(e) {
-    imageData = e.data;
-
-    toggleButtonsAbledness();
-    ctx.putImageData(imageData, 0, 0);
-
+      imageData = e.data;
+      console.log('Message received from worker');
+      toggleButtonsAbledness();
+      return ctx.putImageData(imageData, 0, 0);
     }, false);
   
-    console.log(type);
-   worker.postMessage(args); // Start the worker.
 
 
     // Hint! This is where you should post messages to the web worker and
