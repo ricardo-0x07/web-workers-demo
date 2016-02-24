@@ -54,12 +54,12 @@
       }
 
 
-      worker.onmessage = function(e){
-      imageData = e.data;
-      console.log('Message received from worker');
-      return ctx.putImageData(imageData, 0, 0);
+      // worker.onmessage = function(e){
+      // imageData = e.data;
+      // console.log('Message received from worker');
+      // return ctx.putImageData(imageData, 0, 0);
 
-      };
+      // };
     }
 
 
