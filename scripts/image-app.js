@@ -49,7 +49,7 @@
 
     var worker = new Worker('worker.js');
     var args = {"imageData": imageData, "type":type};
-      if(worker.postMessage(args)){
+      if(worker.postMessage("args")){
         console.log('Message posted to worker');
       }
 
