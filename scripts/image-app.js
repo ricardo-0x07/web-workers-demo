@@ -45,6 +45,8 @@
     toggleButtonsAbledness();
 
     if (window.Worker) {
+    console.log(type);
+
     var worker = new Worker('worker.js');
     var args = {imageData: imageData, type:type};
       if(worker.postMessage(args)){
