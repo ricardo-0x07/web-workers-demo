@@ -46,7 +46,7 @@
 
     var worker = new Worker('worker.js');
  
-  worker.addEventListener('message', function(e) {
+    worker.addEventListener('message', function(e) {
     imageData = e.data;
 
     toggleButtonsAbledness();
