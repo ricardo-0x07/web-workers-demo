@@ -39,6 +39,8 @@
   function manipulateImage(type) {
     var a, b, g, i, imageData, j, length, pixel, r, ref;
     imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    var args = {"imageData": imageData, "type":type};
+
 
     toggleButtonsAbledness();
 
@@ -52,7 +54,7 @@
 
     }, false);
 
-   worker.postMessage({"imageData": imageData, "type":type}); // Start the worker.
+   worker.postMessage(args); // Start the worker.
 
 
     // Hint! This is where you should post messages to the web worker and
